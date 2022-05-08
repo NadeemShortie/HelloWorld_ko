@@ -1,17 +1,17 @@
-SUMMARY = "Example of how to build an external Linux kernel module"
-LICENSE = "GPLv2"
-LIC_FILES_CHKSUM = "file://COPYING;md5=12f884d2ae1ff87c09e5b7ccc2c4ca7e"
+SUMMARY = "hello-module"
+DESCRIPTION = "Enables user mode access to PMU registers"
+LICENSE = "CLOSED"
+LIC_FILES_CHKSUM = ""
+SRCBRANCH = "master"
 
 inherit module
 
-SRC_URI = "file://Makefile \
-           file://hello.c \
-           file://COPYING \
-          "
+SRC_URI = "https://github.com/NadeemShortie/HelloWorld_ko.git;protocol=https;branch=${SRCBRANCH}"
+SRCREV = "${AUTOREV}"
 
-S = "${WORKDIR}"
+S = "${WORKDIR}/git"
 
 # The inherit of module.bbclass will automatically name module packages with
 # "kernel-module-" prefix as required by the oe-core build environment.
 
-RPROVIDES_${PN} += "kernel-module-hello"
+RPROVIDES_${PN} += "kernel-module-hello-user"
